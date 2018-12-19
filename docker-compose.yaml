@@ -1,0 +1,18 @@
+version: '2'
+services:
+    spring-boot:
+      container_name: server
+      image: server
+      ports: 
+          - 8080:8080
+      depends_on:
+          - db
+    db:
+        container_name: db
+        image: postgres
+        ports:
+          - "5432:5432"
+        environment:
+          - POSTGRES_PASSWORD=password
+          - POSTGRES_USER=postgres
+          - POSTGRES_DB=mydb
